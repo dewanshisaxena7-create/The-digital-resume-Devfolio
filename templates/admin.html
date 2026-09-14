@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard | Devanshi Saxena Portfolio{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: 130px;">
+    <div class="container">
+        <h2 class="section-title"><i class="fa-solid fa-database"></i> Portfolio SQL Admin Portal</h2>
+        <p class="section-subtitle">Easily manage your projects, achievements, and C++ DSA solutions in your SQLite database</p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div style="padding: 14px 20px; background: rgba(0, 245, 212, 0.15); border: 1px solid var(--accent-green); color: var(--accent-green); border-radius: var(--radius-sm); margin-bottom: 25px;">
+                  <i class="fa-solid fa-circle-check"></i> {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 50px;">
+            
+            <!-- Add New Project Form -->
+            <div class="glass-card">
+                <h3 style="font-size: 1.3rem; margin-bottom: 20px; color: var(--accent-cyan);"><i class="fa-solid fa-folder-plus"></i> Add New Project</h3>
+                <form method="POST" action="/admin">
+                    <input type="hidden" name="action" value="add_project">
+
+                    <div class="form-group">
+                        <label>Project Title</label>
+                        <input type="text" name="title" class="form-control" placeholder="e.g. C++ High-Frequency Engine" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Subtitle / Tagline</label>
+                        <input type="text" name="subtitle" class="form-control" placeholder="Short summary">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="category" class="form-control">
+                            <option value="C++ / Systems">C++ / Systems</option>
+                            <option value="Web App">Web App (Flask)</option>
+                            <option value="DSA Engine">DSA Engine</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tech Stack (Comma Separated)</label>
+                        <input type="text" name="tech_stack" class="form-control" placeholder="C++, STL, Flask, SQLite" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>GitHub Repository URL</label>
+                        <input type="url" name="github_url" class="form-control" placeholder="https://github.com/...">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea name="description" class="form-control" placeholder="Detailed project overview..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                        <i class="fa-solid fa-plus"></i> Save Project to SQL DB
+                    </button>
+                </form>
+            </div>
+
+            <!-- Add DSA Solution Form -->
+            <div class="glass-card">
+                <h3 style="font-size: 1.3rem; margin-bottom: 20px; color: var(--accent-purple);"><i class="fa-solid fa-code"></i> Add C++ DSA Solution</h3>
+                <form method="POST" action="/admin">
+                    <input type="hidden" name="action" value="add_dsa">
+
+                    <div class="form-group">
+                        <label>Problem Title</label>
+                        <input type="text" name="title" class="form-control" placeholder="e.g. Merge K Sorted Lists" required>
+                    </div>
+
+                    <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div>
+                            <label>Category</label>
+                            <select name="category" class="form-control">
+                                <option value="Arrays & Hashing">Arrays & Hashing</option>
+                                <option value="Trees & Graphs">Trees & Graphs</option>
+                                <option value="Dynamic Programming">Dynamic Programming</option>
+                                <option value="Heaps & Graphs">Heaps & Graphs</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Difficulty</label>
+                            <select name="difficulty" class="form-control">
+                                <option value="Easy">Easy</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="Hard">Hard</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div>
+                            <label>Time Complexity</label>
+                            <input type="text" name="time_complexity" class="form-control" placeholder="e.g. O(N log N)" required>
+                        </div>
+                        <div>
+                            <label>Space Complexity</label>
+                            <input type="text" name="space_complexity" class="form-control" placeholder="e.g. O(1)" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Problem Statement</label>
+                        <textarea name="problem_statement" class="form-control" placeholder="Given an array of integers..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>C++ Solution Source Code</label>
+                        <textarea name="cpp_solution" class="form-control" style="font-family: var(--font-mono); height: 120px;" placeholder="#include <iostream>..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Explanation</label>
+                        <input type="text" name="explanation" class="form-control" placeholder="Uses two pointer technique...">
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));">
+                        <i class="fa-solid fa-plus"></i> Save C++ Solution to SQL DB
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Messages Received -->
+        <div class="glass-card">
+            <h3 style="font-size: 1.3rem; margin-bottom: 20px; color: var(--accent-green);"><i class="fa-solid fa-envelope"></i> Contact Messages Saved in Database</h3>
+            
+            {% if messages %}
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                {% for msg in messages %}
+                <div style="background: rgba(13, 17, 26, 0.8); border: 1px solid var(--border-color); padding: 16px; border-radius: var(--radius-sm);">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                        <strong style="color: var(--accent-cyan);">{{ msg.name }} ({{ msg.email }})</strong>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">{{ msg.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
+                    </div>
+                    <div style="font-weight: 600; margin-bottom: 6px;">Subject: {{ msg.subject }}</div>
+                    <p style="font-size: 0.92rem; color: var(--text-secondary);">{{ msg.message }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p style="color: var(--text-muted);">No messages received in the database yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

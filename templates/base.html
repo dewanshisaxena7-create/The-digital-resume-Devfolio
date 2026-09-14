@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Developer Portfolio of Devanshi Saxena showcasing C++, Data Structures & Algorithms, Flask Backend, and SQL Projects.">
+    <meta name="author" content="Devanshi Saxena">
+    <title>{% block title %}Devanshi Saxena | Developer Portfolio{% endblock %}</title>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Soft Blurred Background Layer -->
+    <div class="soft-bg-overlay" aria-hidden="true">
+        <div class="soft-bg-image" style="background-image: url('{{ url_for('static', filename='images/devanshi.jpg') }}');"></div>
+        <div class="soft-bg-tint"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+        <a href="#about" class="nav-brand">
+            <span>Devanshi Saxena</span>
+            <span class="brand-badge">Portfolio</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#dsa">C++ & DSA Hub</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="/admin" class="nav-btn"><i class="fa-solid fa-gear"></i> Admin SQL Portal</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Global Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Devanshi Saxena. Built with <i class="fa-solid fa-heart" style="color: var(--accent-brown);"></i> using <strong>Flask</strong>, <strong>SQLite (SQL)</strong>, <strong>C++</strong>, and custom CSS.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
