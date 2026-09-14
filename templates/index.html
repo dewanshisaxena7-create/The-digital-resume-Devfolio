@@ -16,7 +16,7 @@
                     Welcome to my Portfolio!
                 </h1>
                 <p class="hero-desc">
-                    I am a software engineer passionate about low-level <strong>C++</strong> programming, <strong>Data Structures & Algorithms</strong>, <strong>Flask</strong> backend development, and <strong>SQL</strong> databases. Explore my GitHub projects, achievements, and code solutions below!
+                    I am a software engineer passionate about low-level <strong>C++</strong> programming, <strong>Data Structures & Algorithms</strong>, <strong>Flask</strong> backend development, and <strong>SQL</strong> databases. Explore my profile links, projects, achievements, and code solutions below!
                 </p>
                 
                 <div class="hero-btns">
@@ -45,12 +45,8 @@
                 </div>
             </div>
 
-            <!-- Profile Welcome Card with Devanshi's Uploaded Photo -->
+            <!-- Profile Welcome Card with Devanshi's Photo & Exact Social Links -->
             <div class="hero-welcome-card">
-                <div class="welcome-badge">
-                    <i class="fa-solid fa-heart"></i> Active Developer
-                </div>
-                
                 <div class="welcome-avatar-wrapper">
                     <img src="{{ url_for('static', filename='images/devanshi.jpg') }}" alt="Devanshi Saxena" class="profile-photo-avatar">
                     <div class="welcome-intro">
@@ -59,14 +55,24 @@
                     </div>
                 </div>
 
-                <div style="font-size: 1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 22px;">
+                <div style="font-size: 0.98rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 22px;">
                     "I love building efficient software, solving challenging algorithm problems, and creating full-stack web applications backed by solid database design."
                 </div>
 
-                <div class="welcome-tags">
-                    <span class="chip-tag"><i class="fa-brands fa-github" style="color: var(--accent-brown);"></i> github.com/dewanshisaxena7-create</span>
-                    <span class="chip-tag"><i class="fa-solid fa-database" style="color: var(--accent-gold);"></i> SQLite DB</span>
-                    <span class="chip-tag"><i class="fa-solid fa-bolt" style="color: var(--accent-sand);"></i> High Performance</span>
+                <!-- Social & Coding Profiles Bar -->
+                <div class="welcome-tags" style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="https://leetcode.com/u/Devanshi_saxena07/" target="_blank" class="chip-tag chip-link">
+                        <i class="fa-solid fa-code" style="color: #ffa116;"></i> LeetCode Profile: <strong>Devanshi_saxena07</strong>
+                    </a>
+                    <a href="https://www.naukri.com/code360/profile/1f841362-a8c9-438e-85fb-e26e30673641" target="_blank" class="chip-tag chip-link">
+                        <i class="fa-solid fa-laptop-code" style="color: #ff6b35;"></i> Coding Ninjas (Code360) Profile
+                    </a>
+                    <a href="https://www.linkedin.com/in/devanshi-s-228018312" target="_blank" class="chip-tag chip-link">
+                        <i class="fa-brands fa-linkedin" style="color: #0a66c2;"></i> LinkedIn Profile
+                    </a>
+                    <a href="https://github.com/dewanshisaxena7-create" target="_blank" class="chip-tag chip-link">
+                        <i class="fa-brands fa-github" style="color: var(--text-primary);"></i> GitHub: <strong>dewanshisaxena7-create</strong>
+                    </a>
                 </div>
             </div>
         </div>
@@ -269,18 +275,34 @@
 
                 <div style="display: flex; flex-direction: column; gap: 18px;">
                     <div style="display: flex; align-items: center; gap: 14px;">
-                        <i class="fa-brands fa-github" style="font-size: 1.5rem; color: var(--accent-brown);"></i>
+                        <i class="fa-solid fa-code" style="font-size: 1.4rem; color: #ffa116;"></i>
                         <div>
-                            <div style="font-size: 0.82rem; color: var(--text-muted);">GitHub Profile</div>
-                            <a href="https://github.com/dewanshisaxena7-create" target="_blank" style="font-weight: 700;">github.com/dewanshisaxena7-create</a>
+                            <div style="font-size: 0.82rem; color: var(--text-muted);">LeetCode</div>
+                            <a href="https://leetcode.com/u/Devanshi_saxena07/" target="_blank" style="font-weight: 700;">leetcode.com/u/Devanshi_saxena07</a>
                         </div>
                     </div>
 
                     <div style="display: flex; align-items: center; gap: 14px;">
-                        <i class="fa-solid fa-database" style="font-size: 1.5rem; color: var(--accent-gold);"></i>
+                        <i class="fa-solid fa-laptop-code" style="font-size: 1.4rem; color: #ff6b35;"></i>
                         <div>
-                            <div style="font-size: 0.82rem; color: var(--text-muted);">Database Backend</div>
-                            <span style="font-family: var(--font-mono); font-size: 0.92rem; color: var(--text-secondary);">SQLite (Flask SQLAlchemy)</span>
+                            <div style="font-size: 0.82rem; color: var(--text-muted);">Coding Ninjas (Code360)</div>
+                            <a href="https://www.naukri.com/code360/profile/1f841362-a8c9-438e-85fb-e26e30673641" target="_blank" style="font-weight: 700;">Code360 Profile</a>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <i class="fa-brands fa-linkedin" style="font-size: 1.4rem; color: #0a66c2;"></i>
+                        <div>
+                            <div style="font-size: 0.82rem; color: var(--text-muted);">LinkedIn</div>
+                            <a href="https://www.linkedin.com/in/devanshi-s-228018312" target="_blank" style="font-weight: 700;">linkedin.com/in/devanshi-s-228018312</a>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <i class="fa-brands fa-github" style="font-size: 1.4rem; color: var(--text-primary);"></i>
+                        <div>
+                            <div style="font-size: 0.82rem; color: var(--text-muted);">GitHub</div>
+                            <a href="https://github.com/dewanshisaxena7-create" target="_blank" style="font-weight: 700;">github.com/dewanshisaxena7-create</a>
                         </div>
                     </div>
                 </div>

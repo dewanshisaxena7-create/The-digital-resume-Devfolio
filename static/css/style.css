@@ -415,13 +415,29 @@ a:hover {
 }
 
 .chip-tag {
-    padding: 6px 14px;
+    padding: 8px 16px;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-full);
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     font-weight: 600;
     color: var(--text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chip-link {
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.chip-link:hover {
+    background: #ffffff;
+    border-color: var(--accent-gold);
+    color: var(--accent-brown);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(199, 139, 48, 0.15);
 }
 
 /* Skills Grid */
