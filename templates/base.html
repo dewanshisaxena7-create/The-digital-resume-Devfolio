@@ -36,7 +36,10 @@
             <li><a href="#dsa">C++ & DSA Hub</a></li>
             <li><a href="#achievements">Achievements</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="/admin" class="nav-btn"><i class="fa-solid fa-gear"></i> Admin SQL Portal</a></li>
+            {% if session.get('admin_logged_in') %}
+            <li><a href="/admin" class="nav-btn"><i class="fa-solid fa-gear"></i> Admin Dashboard</a></li>
+            <li><a href="/admin/logout" style="color: var(--accent-pink); font-size: 0.9rem;"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+            {% endif %}
         </ul>
     </nav>
 

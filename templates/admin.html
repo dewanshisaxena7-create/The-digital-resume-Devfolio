@@ -5,8 +5,13 @@
 {% block content %}
 <section class="section" style="padding-top: 130px;">
     <div class="container">
-        <h2 class="section-title"><i class="fa-solid fa-database"></i> Portfolio SQL Admin Portal</h2>
-        <p class="section-subtitle">Easily manage your projects, achievements, and C++ DSA solutions in your SQLite database</p>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
+            <div>
+                <h2 class="section-title" style="text-align: left; margin-bottom: 4px;"><i class="fa-solid fa-database" style="color: var(--accent-brown);"></i> Admin Management Dashboard</h2>
+                <p style="color: var(--text-secondary); font-size: 0.98rem;">Manage your projects, achievements, and C++ DSA solutions in your SQLite database</p>
+            </div>
+            <a href="/admin/logout" class="btn-outline" style="border-color: var(--accent-pink); color: var(--accent-pink); padding: 8px 20px;"><i class="fa-solid fa-right-from-bracket"></i> Logout Admin</a>
+        </div>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
           {% if messages %}

@@ -1,10 +1,14 @@
-from flask import Flask, render_template, request, jsonify, flash, redirect, url_for
+import os
+from flask import Flask, render_template, request, jsonify, flash, redirect, url_for, session
 from config import Config
 from models import db, Project, Achievement, DSAProblem, ContactMessage
 
 # Initialize Flask application
 app = Flask(__name__)
 app.config.from_object(Config)
+
+# Admin Secret Password (default: 'devanshi2026')
+ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD') or 'devanshi2026'
 
 # Initialize SQLAlchemy with app
 db.init_app(app)
@@ -36,11 +40,44 @@ def home():
                            dsa_problems=dsa_problems, 
                            stats=stats)
 
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+    """
+    Admin Password Authentication Login Route.
+    """
+    if session.get('admin_logged_in'):
+        return redirect(url_for('admin'))
+
+    if request.method == 'POST':
+        password = request.form.get('password')
+        if password == ADMIN_PASSWORD:
+            session['admin_logged_in'] = True
+            flash('Successfully authenticated as Admin!', 'success')
+            return redirect(url_for('admin'))
+        else:
+            flash('Invalid Admin Password. Access Denied.', 'danger')
+
+    return render_template('admin_login.html')
+
+@app.route('/admin/logout')
+def admin_logout():
+    """
+    Admin Logout Route.
+    """
+    session.pop('admin_logged_in', None)
+    flash('Logged out of Admin Portal.', 'success')
+    return redirect(url_for('home'))
+
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
     """
-    Admin Dashboard Route to add projects, achievements, and DSA solutions to SQL database.
+    Protected Admin Dashboard Route.
+    Requires session authentication.
     """
+    # Protect admin route with session check
+    if not session.get('admin_logged_in'):
+        return redirect(url_for('admin_login'))
+
     if request.method == 'POST':
         action = request.form.get('action')
 
